@@ -1,0 +1,225 @@
+# automation:
+
+  - alias: Workday Morning Lights On
+    trigger:
+      platform: time
+      at: "06:00:00"
+    condition:
+      condition: state
+      entity_id: 'binary_sensor.workday_sensor'
+      state: 'on'
+    action:
+      service: switch.turn_on
+      entity_id:
+        - group.lampor
+
+  - alias: Workday Morning Lights Off
+    trigger:
+      platform: time
+      at: "08:00:00"
+    condition:
+      condition: state
+      entity_id: 'binary_sensor.workday_sensor'
+      state: 'on'
+    action:
+      service: switch.turn_off
+      entity_id:
+        - group.lampor
+
+  - alias: Workday Evening Lights On
+    trigger:
+      platform: time
+      at: "16:00:00"
+    condition:
+      condition: state
+      entity_id: 'binary_sensor.workday_sensor'
+      state: 'on'
+    action:
+      service: switch.turn_on
+      entity_id:
+        - group.lampor
+
+  - alias: Workday Evening Lights Off
+    trigger:
+      platform: time
+      at: "23:00:00"
+    condition:
+      condition: state
+      entity_id: 'binary_sensor.workday_sensor'
+      state: 'on'
+    action:
+      service: switch.turn_off
+      entity_id:
+        - group.lampor
+
+  - alias: Weekend Lights On
+    trigger:
+      platform: time
+      at: "16:00:00"
+    condition:
+      condition: state
+      entity_id: 'binary_sensor.workday_sensor'
+      state: 'off'
+    action:
+      service: switch.turn_on
+      entity_id:
+        - group.lampor
+
+  - alias: Weekend Lights Off
+    trigger:
+      platform: time
+      at: "23:59:00"
+    condition:
+      condition: state
+      entity_id: 'binary_sensor.workday_sensor'
+      state: 'off'
+    action:
+      service: switch.turn_off
+      entity_id:
+        - switch.bordslampa_tvrum
+        - switch.fonsterlampa_vardagsrum
+        - switch.ljusslinga_vardagsrum
+        - switch.rislampa_vardagsrum
+        - switch.fonsterlampa_kok
+
+
+
+  - alias: 'Push när man slår på lampa i köket'
+    trigger:
+      platform: state
+      entity_id: switch.fonsterlampa_kok
+      from: 'off'
+      to: 'on'
+    action:
+      service: notify.push_fredrik
+      data:
+        message: Lampa i köket påslagen
+  - alias: 'Push när man slår av lampa i köket'
+    trigger:
+      platform: state
+      entity_id: switch.fonsterlampa_kok
+      from: 'on'
+      to: 'off'
+    action:
+      service: notify.push_fredrik
+      data:
+        message: Lampa i köket avslagen
+  - alias: 'push_linda_hemma'
+    trigger:
+      platform: state
+      entity_id: device_tracker.lindaiphone
+      from: 'not home'
+      to: 'home'
+    action:
+      service: notify.push_fredrik
+      data:
+        message: Linda har kommit hem.
+
+
+  - alias: 'push_ölkällare_larm'
+    trigger:
+      platform: numeric_state
+      entity_id: sensor.olkallare_temperature
+      below: 3
+    action:
+      service: notify.push_fredrik
+      data:
+        message: Temperatur låg i ölkällare.
+
+  - alias: "push_humidor_humid_low"
+    trigger:
+      platform: numeric_state
+      entity_id: sensor.humidor_humidity
+      below: 62
+    action:
+      service: notify.push_fredrik
+      data:
+        title: Fuktighetsgrad för låg i humidor
+        message: Fuktighetsgrad för låg i humidor
+
+  - alias: "push_humidor_humid_high"
+    trigger:
+      platform: numeric_state
+      entity_id: sensor.humidor_humidity
+      above: 70
+    action:
+      service: notify.push_fredrik
+      data:
+        title: Fuktighetsgrad för hög i humidor
+        message: Fuktighetsgrad för hög i humidor
+  - alias: 'push_garagetemp_larm'
+    trigger:
+      platform: numeric_state
+      entity_id: sensor.garage_temperature
+      below: 10
+    action:
+      service: notify.push_fredrik
+      data:
+        title: Temperatur låg i garaget.
+        message: Är garagedörren öppen?
+
+  - alias: 'Update Available Notifications'
+    trigger:
+      platform: state
+      entity_id: updater.updater
+    action:
+      service: notify.push_fredrik
+      data:
+        message: 'Update for Home Assistant is available.'
+        
+
+  - alias: 'Set theme at startup'
+    initial_state: 'on'
+    trigger:
+     - platform: homeassistant
+       event: start
+    action:
+      service: frontend.set_theme
+      data:
+        name: midnight
+        
+        
+        
+######## Wakeup light
+
+#  old:
+  - alias: 'WakeUp Light Bedroom'
+    hide_entity: false
+
+#    trigger:
+#      platform: template
+#      value_template: '{{ states.sensor.time.state == states.sensor.wakeup_start_time_lights.state }}'
+
+#    trigger:
+#      platform: time
+#      at: '13:07:00'
+
+    trigger:
+      platform: template
+      value_template: "{{ states('sensor.time') == (states.input_datetime.wakeup_time.attributes.timestamp | int | timestamp_custom('%H:%M', False)) }}"
+
+
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: input_boolean.wakeup
+          state: 'on'
+        - condition: state
+          entity_id: light.light_2
+          state: 'off'
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: input_boolean.wakeup_weekends
+              state: 'on'
+            - condition: time
+              weekday:
+                - mon
+                - tue
+                - wed
+                - thu
+                - fri
+    action:
+      service: script.wakeup_bedroom
+

@@ -1,0 +1,101 @@
+ # - platform: plex
+  - platform: yr
+  - platform: time_date
+    display_options:
+      - 'time'
+      #- 'date'
+      #- 'date_time'
+      #- 'time_date'
+      #- 'time_utc'
+      #- 'beat'
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /home
+      - type: memory_free
+      - type: processor_use
+  #- platform: mqtt
+  #  state_topic: 'humidor/sensor1'
+  #  name: 'Temp hobbyrum'
+  #  unit_of_measurement: '°C'
+  #  value_template: '{{ value_json.temperature }}'
+  #- platform: mqtt
+  #  state_topic: 'humidor/sensor1'
+  #  name: 'Luftfuktighet hobbyrum'
+  #  unit_of_measurement: '%'
+  #  value_template: '{{ value_json.humidity }}'
+  - platform: tellstick
+    datatype_mask: 3
+    only_named: True
+    temperature_scale: "°C"
+    33: Ölkällare
+    242: Frys_Kök
+    131: Jäskyl1
+    132: Jäskyl2
+    133: Sovrum_Jack
+    134: Sovrum
+    142: Inglasning
+    222: Kyl_Kök
+    143: Ute
+    141: Humidor
+    107: Frys_Garage
+
+  - platform: efergy
+    app_token: !secret efergy_token
+    utc_offset: 0
+    monitored_variables:
+      - type: current_values
+      #- type: budget
+      #- type: cost
+      #  period: day
+      #  currency: kr
+      #- type: amount
+      #  period: day
+
+  - platform: bitcoin
+    display_options:
+      - exchangerate
+#      - trade_volume_btc
+
+
+
+
+
+
+
+############ Wakeup lamp
+  - platform: template
+    sensors:
+      wakeup_alarm_time:
+        friendly_name: 'Wakeup Alarm time'
+        value_template: '{% if states.input_number.wakeup_hour.state|length == 3 %}0{% endif %}{{ states.input_number.wakeup_hour.state | int }}:{% if states.input_number.wakeup_minutes.state|length == 3 %}0{% endif %}{{ states.input_number.wakeup_minutes.state | int }}'
+#  - platform: template
+#    sensors:
+#      wakeup_start_time_lights:
+#        friendly_name: 'Fade-in start time'
+#        value_template: >
+#          {% if states.wakeup_alarm_time and states.input_number.wakeup_duration %}
+#          {% set alarmtime = states.sensor.wakeup_alarm_time.state %}
+#          {% set alarm_hour = alarmtime.split(":")[0] | int %}
+#          {% set alarm_min = alarmtime.split(":")[1] | int %}
+#          {% set light_dur = states.input_number.wakeup_duration.state | int %}
+#          {% set alarm_min_light = alarm_min - light_dur %}
+#          {% if alarm_min_light  < 0 %}
+#          {% set alarm_min_light = alarm_min_light + 60 %}
+#          {% set alarm_hour_light = alarm_hour - 1 %}
+#          {% if alarm_hour_light < 0 %}{% set alarm_hour_light = 23 %}{% endif %}
+#          {% if alarm_hour_light < 10 %}0{% endif %}{{ alarm_hour_light}}:{% if alarm_min_light < 10 %}0{% endif %}{{ alarm_min_light }}
+#          {% else %}
+#          {% if alarm_hour < 10 %}0{% endif %}{{ alarm_hour }}:{% if alarm_min_light < 10 %}0{% endif %}{{ alarm_min_light }}
+#          {% endif %}
+#          {% endif %}
+
+  - platform: template
+    sensors:
+      wakeup_fadein_duration:
+        friendly_name: 'Fade-in duration'
+        value_template: '{{ states.input_number.wakeup_duration.state | int }}'
+        unit_of_measurement: 'min'
+
+
+  

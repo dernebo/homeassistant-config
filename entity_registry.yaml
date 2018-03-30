@@ -1,0 +1,68 @@
+media_player.tvrum:
+  name:
+  platform: apple_tv
+  unique_id: 990de87b64e876d5c166955d826a205bf2e35162472ccbb9ae7c93a65ee29ef3
+media_player.garage:
+  name:
+  platform: apple_tv
+  unique_id: 5ca643c62787ef22d5bd41e501dc692969ec053b103bcdddb35e0520e2fc2fb5
+media_player.vardagsrum:
+  name:
+  platform: apple_tv
+  unique_id: 998788e0f2eaf59156bc86fd67f78597e795f6e82e26d10f221ded470a00bbcc
+remote.tvrum:
+  name:
+  platform: apple_tv
+  unique_id: 990de87b64e876d5c166955d826a205bf2e35162472ccbb9ae7c93a65ee29ef3
+remote.garage:
+  name:
+  platform: apple_tv
+  unique_id: 5ca643c62787ef22d5bd41e501dc692969ec053b103bcdddb35e0520e2fc2fb5
+remote.vardagsrum:
+  name:
+  platform: apple_tv
+  unique_id: 998788e0f2eaf59156bc86fd67f78597e795f6e82e26d10f221ded470a00bbcc
+sensor.myphone7plus_battery_level:
+  name:
+  platform: ios
+  unique_id: level_fredriks
+sensor.myphone7plus_battery_state:
+  name:
+  platform: ios
+  unique_id: state_fredriks
+sensor.lindas_iphone_battery_level:
+  name:
+  platform: ios
+  unique_id: level_lindas_iphone
+sensor.lindas_iphone_battery_state:
+  name:
+  platform: ios
+  unique_id: state_lindas_iphone
+light.light_2:
+  name:
+  platform: deconz
+  unique_id: 00:17:88:01:03:0a:a2:e5-0b
+light.light_1:
+  name:
+  platform: deconz
+  unique_id: 00:17:88:01:03:16:92:3e-0b
+sensor.myphone7plus_battery_level_2:
+  name:
+  platform: ios
+  unique_id: level_Fredriks iPhone
+sensor.myphone7plus_battery_state_2:
+  name:
+  platform: ios
+  unique_id: state_Fredriks iPhone
+light.sovrum_bord:
+  name:
+  platform: deconz
+  unique_id: 90:fd:9f:ff:fe:d1:6d:fc-01
+light.badrum1:
+  name:
+  platform: deconz
+  unique_id: 90:fd:9f:ff:fe:72:3b:a0-01
+light.badrum2:
+  name:
+  platform: deconz
+  unique_id: 90:fd:9f:ff:fe:6b:76:78-01

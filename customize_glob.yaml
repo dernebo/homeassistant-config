@@ -1,0 +1,13 @@
+"*.*":
+  custom_ui_state_card: state-card-custom-ui
+binary_sensor.*:
+  state_card_mode: badges
+light.light_1:
+  state_card_mode: break-slider
+  stretch_slider: true
+  show_last_changed: true
+  
+light.light_2:
+  state_card_mode: break-slider
+  stretch_slider: true
+  show_last_changed: true

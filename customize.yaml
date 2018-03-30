@@ -1,0 +1,195 @@
+group.all_lights:
+  hidden: false
+group.all_devices:
+  hidden: false
+group.all_automations:
+  hidden: false
+group.all_locks:
+  hidden: false
+group.all_sensors:
+  hidden: false
+group.all_switches:
+  hidden: false
+group.all_binary_sensors:
+  hidden: false
+
+
+
+sensor.frys_garage_temperature:
+  friendly_name: Frys garage
+  icon: mdi:temperature-celsius
+  homebridge_visible: true
+sensor.kyl_kok_temperature:
+  friendly_name: Kylskåp kök
+  icon: mdi:temperature-celsius
+  homebridge_visible: true
+sensor.ute_temperature:
+  friendly_name: Ute
+  homebridge_visible: true
+  icon: mdi:temperature-celsius
+sensor.olkallare_temperature:
+  friendly_name: Ölkällare
+  homebridge_name: Ölkällare
+  homebridge_visible: true
+  icon: mdi:temperature-celsius
+sensor.sovrum_jack_temperature:
+  friendly_name: Sovrum Jack
+  homebridge_name: Sovrum Jack
+  homebridge_visible: true
+  icon: mdi:temperature-celsius
+sensor.sovrum_temperature:
+  friendly_name: Sovrum
+  homebridge_name: Sovrum
+  homebridge_visible: true
+  icon: mdi:temperature-celsius
+sensor.frys_kok_temperature:
+  friendly_name: Frys kök
+  homebridge_visible: true
+  icon: mdi:temperature-celsius
+sensor.humidor_temperature:
+  friendly_name: Humidor
+  homebridge_visible: true
+  icon: mdi:temperature-celsius
+sensor.jaskyl1_temperature:
+  friendly_name: Jäskyl 1
+  homebridge_name: Jäskyl 1
+  homebridge_visible: true
+  icon: mdi:temperature-celsius
+sensor.jaskyl2_temperature:
+  friendly_name: Jäskyl 2
+  homebridge_name: Jäskyl 2
+  homebridge_visible: true
+  icon: mdi:temperature-celsius
+sensor.inglasning_temperature:
+  friendly_name: Inglasning
+  homebridge_visible: true
+  icon: mdi:temperature-celsius
+sensor.vardagsrum_temperature:
+  friendly_name: Vardagsrum
+  homebridge_name: Vardagsrum
+  homebridge_visible: true
+  icon: mdi:temperature-celsius
+sensor.garage_temperature:
+  friendly_name: Garage
+  homebridge_visible: true
+  icon: mdi:temperature-celsius
+sensor.kok_temperature:
+  friendly_name: Kök
+  icon: mdi:temperature-celsius
+light.light_1:
+  friendly_name: Lampa TVRum
+  icon: mdi:lightbulb-on-outline
+light.light_2:
+  friendly_name: Lampa Vardagsrum
+  icon: mdi:lightbulb-on-outline
+sensor.olkallare_humidity:
+  friendly_name: Ölkällare luftfuktighet
+  homebridge_name: Ölkällare
+  icon: mdi:water-percent
+sensor.humidor_humidity:
+  friendly_name: Humidor luftfuktighet
+  icon: mdi:water-percent
+  homebridge_visible: true
+sensor.kok_humidity:
+  friendly_name: Luftfuktighet kök
+  icon: mdi:water-percent
+sensor.vardagsrum_humidity:
+  homebridge_visible: true
+  friendly_name: Luftfuktighet vardagsrum
+  icon: mdi:water-percent
+sensor.garage_humidity:
+  friendly_name: Luftfuktighet garage
+  icon: mdi:water-percent
+binary_sensor.altandorr_kok:
+  friendly_name: Altandörr kök
+  homebridge_name: Altandörr kök
+  device_class: door
+binary_sensor.entre:
+  friendly_name: Entrédörr
+  device_class: door
+binary_sensor.garageport:
+  friendly_name: Garageport
+  device_class: garage_door
+binary_sensor.groventre:
+  friendly_name: Groventré
+  device_class: door
+binary_sensor.sovrum_jack:
+  friendly_name: Altandörr Jacks rum
+  device_class: door
+binary_sensor.altandorr_vardagsrum:
+  friendly_name: Altandörr vardagsrum
+  homebridge_name: Altandörr vardagsrum
+  device_class: door
+sensor.efergy_599248:
+  friendly_name: Effektförbrukning
+  homebridge_visible: true
+sensor.speedtest_download:
+  friendly_name: Download
+  icon: mdi:arrow-down-bold
+sensor.speedtest_upload:
+  friendly_name: Upload
+  icon: mdi:arrow-up-bold
+lock.ytterdorr:
+  friendly_name: Dörrlås ytterdörr
+  device_class: lock
+switch.larmindikator:
+  friendly_name: Larmindikator
+  icon: mdi:alarm-light
+switch.fonster_tvrum:
+  friendly_name: Fönster TVRum
+  homebridge_visible: true
+  assumed_state: false
+  icon: mdi:lightbulb-on-outline
+switch.fonsterlampa_vardagsrum:
+  friendly_name: Fönsterlampa vardagsrum
+  homebridge_visible: true
+  assumed_state: false
+  icon: mdi:lightbulb-on-outline
+switch.ljusslinga_vardagsrum:
+  friendly_name: Ljusslinga vardagsrum
+  homebridge_visible: true
+  assumed_state: false
+  icon: mdi:lightbulb-on-outline
+switch.motorvarmare:
+  friendly_name: Motorvärmare
+  homebridge_visible: true
+  assumed_state: false
+  icon: mdi:radiator
+switch.rislampa_vardagsrum:
+  friendly_name: Rislampa vardagsrum
+  homebridge_visible: true
+  assumed_state: false
+  icon: mdi:lightbulb-on-outline
+switch.fonsterlampa_kok:
+  friendly_name: Fönsterlampa Kök
+  homebridge_visible: true
+  assumed_state: false
+  icon: mdi:lightbulb-on-outline
+automation.workday_morning_lights_on:
+  friendly_name: Lampor morgon på
+sensor.ute_humidity:
+  friendly_name: Luftfuktighet ute
+  hidden: true
+sensor.jaskyl1_humidity:
+  friendly_name: Jäskyl 1 Luftfuktighet
+  hidden: true
+sensor.inglasning_humidity:
+  friendly_name: Inglasning Luftfuktighet
+  hidden: true
+sensor.jaskyl2_humidity:
+  friendly_name: Jäskyl 2 Luftfuktighet
+  hidden: true
+sensor.sovrum_jack_humidity:
+  friendly_name: Sovrum Jack luftfuktighet
+  homebridge_name: Sovrum Jack luftfuktighet
+  icon: mdi:water-percent
+  hidden: true
+sensor.sovrum_humidity:
+  friendly_name: Sovrum luftfuktighet
+  homebridge_name: Sovrum luftfuktighet
+  icon: mdi:water-percent
+  hidden: true
+sensor.perdevice_usage:
+  hidden: true
+group.energi:
+  friendly_name: Energi

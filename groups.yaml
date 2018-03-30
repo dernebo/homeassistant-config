@@ -1,0 +1,190 @@
+#-------------------------------
+#------------ Groups -----------
+#-------------------------------
+
+familj:
+  - device_tracker.fredriks_iphone
+  - device_tracker.lindas_iphone
+Väder:
+  - sun.sun
+  - sensor.yr_symbol
+  - sensor.time_date
+  - sensor.systemmonitor
+Hoststatus:
+  - sensor.time
+  - sensor.disk_use_percent_home
+  - sensor.memory_free
+  - sensor.processor_use
+  - sensor.speedtest_ping
+  - sensor.speedtest_download
+  - sensor.speedtest_upload
+Dörrar:
+  - binary_sensor.entre
+  - binary_sensor.altandorr_kok
+  - binary_sensor.altandorr_vardagsrum
+  - binary_sensor.garageport
+  - binary_sensor.groventre
+  - binary_sensor.sovrum_jack
+klimat:
+  - sensor.kok_temperature
+  - sensor.vardagsrum_temperature
+  - sensor.frys_kok_temperature
+  - sensor.kyl_kok_temperature
+  - sensor.sovrum_temperature
+  - sensor.sovrum_jack_temperature
+  - sensor.inglasning_temperature
+  - sensor.ute_temperature
+  - sensor.vardagsrum_humidity
+  
+Bryggeri:
+  - sensor.jaskyl1_temperature
+  - sensor.jaskyl2_temperature
+  - sensor.humidor_temperature
+  - sensor.humidor_humidity
+  - sensor.garage_temperature
+  - sensor.garage_humidity
+  - switch.motorvarmare
+  - sensor.olkallare_temperature
+  - sensor.olkallare_humidity
+  - sensor.frys_garage_temperature
+Lampor:
+  - switch.fonsterlampa_vardagsrum
+  - switch.ljusslinga_vardagsrum
+  - switch.rislampa_vardagsrum
+  - switch.fonsterlampa_kok
+  - light.light_1
+  - light.light_2
+Devices:
+  - device_tracker.fredriks_iphone
+  - device_tracker.fredriks
+  - sensor.myphone7plus_battery_level
+  - sensor.myphone7plus_battery_state
+  - device_tracker.lindas_iphone
+  - sensor.lindas_iphone_battery_level
+  - sensor.lindas_iphone_battery_state
+Larm:
+  - switch.larmindikator
+  - lock.ytterdorr
+  - alarm_control_panel.aprilstigen_alarm
+Info:
+  - sensor.exchange_rate_1_btc
+  - sensor.time
+  - binary_sensor.workday_sensor
+energi:
+  - sensor.efergy_599248
+myautomation:
+  - automation.workday_morning_lights_on
+  - automation.workday_morning_lights_off
+  - automation.workday_evening_lights_on
+  - automation.workday_evening_lights_off
+  - automation.push_olkallare_larm
+  - automation.push_olkallare_temp
+  - automation.push_nar_man_slar_av_lampa_i_koket
+  - automation.push_nar_man_slar_pa_lampa_i_koket
+  - automation.push_linda_hemma
+  - automation.garage_door_open
+  - automation.push_humidor_humid_low
+  - automation.push_humidor_humid_high
+  - automation.push_humidor_temp
+  - automation.push_garagetemp_larm
+  - automation.set_theme_at_startup
+  - automation.update_available_notifications
+  - automation.wakeup_light_bedroom
+#testgroup:  
+#  - sensor.jaskyl1_temperature
+#  - sensor.jaskyl2_temperature
+#  - sensor.ute_temperature
+#  - sensor.inglasning_temperature
+#  - sensor.garage_temperature
+#  - sensor.kok_temperature
+#  - sensor.vardagsrum_temperature
+#  - sensor.garage_humidity
+#  - sensor.vardagsrum_humidity
+#  - sensor.speedtest_upload
+#  - sensor.speedtest_download
+#  - sensor.olkallare_humidity
+#  - sensor.olkallare_temperature
+#  - sensor.frys_kok_temperature
+#  - sensor.sovrum_jack_humidity
+#  - sensor.sovrum_jack_temperature
+#  - sensor.sovrum_humidity
+#  - sensor.sovrum_temperature
+#  - sensor.kyl_kok_temperature
+#  - sensor.humidor_humidity
+#  - sensor.humidor_temperature
+#  - sensor.frys_garage_temperature
+
+Unused: 
+  - switch.sw1
+  - switch.sw07
+  
+  
+
+wakeuplight:
+  name: Wakeup light
+  control: hidden
+  entities:
+    - sensor.wakeup_alarm_time
+#    - sensor.wakeup_start_time_lights
+    - sensor.wakeup_fadein_duration
+    - input_number.wakeup_hour
+    - input_number.wakeup_minutes
+    - input_number.wakeup_duration
+    - input_boolean.wakeup
+    - input_boolean.wakeup_weekends
+
+
+#-------------------------------
+#------------ Views ------------
+#-------------------------------
+
+def_view:
+  view: yes
+  name: Dashboard
+  entities:
+    - group.lampor
+klimat_view:
+  view: yes
+  name: Klimat
+  entities:
+    - group.klimat
+    - group.vader
+    - group.info
+    - group.bryggeri
+    - weather.openweathermap
+tech_view:
+  view: yes
+  name: Tech
+  entities:
+    - updater.updater
+    - group.hoststatus
+    - group.myautomations
+    - group.energi
+    - group.devices
+automation_view:
+  view: yes
+  name: Automation
+  entities:
+    - group.myautomation
+settings_view:
+  view: yes
+  name: Settings
+  entities:
+    - group.wakeuplight
+    - light.light_2
+    - script.wakeup_bedroom
+    #- states.sensor.time.state
+    #- states.sensor.wakeup_start_time_lights
+    #- wakeup_alarm_time
+
+test_view:
+  view: yes
+  name: Testview
+  entities:
+    - group.all_lights
+    - group.all_devices
+    - group.all_automations
+    - group.all_locks
+    - group.all_sensors
+    - group.all_switches
+    - group.all_binary_sensors  

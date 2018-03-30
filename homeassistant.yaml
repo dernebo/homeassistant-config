@@ -1,0 +1,10 @@
+name: Dernebo Inc.
+latitude: !secret homeassistant_latitude
+longitude: !secret homeassistant_longitude
+elevation: !secret homeassistant_elevation
+unit_system: metric
+time_zone: Europe/Stockholm
+customize: !include customize.yaml
+customize_glob: !include customize_glob.yaml
+packages: !include_dir_named packages
+temperature_unit: C
