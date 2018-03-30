@@ -24,6 +24,8 @@ sun:
 #conversation:
 #introduction:
 
+zeroconf:
+
 panel_iframe:
   configurator:
     title: Configurator
@@ -34,18 +36,18 @@ http:  # base_url: example.duckdns.org:8123
   api_password: !secret http_password
   login_attempts_threshold: 5
   trusted_networks:
-    - 127.0.0.1
-    - 194.50.140.4
+    - 127.0.0.1 #Localhost
+    - 194.50.140.4 #Work
     - 90.231.63.139 #Johan L
     - 81.232.179.242 #Daniel G 
-    - 192.168.1.0/24
+    - 192.168.1.0/24 #Local network
   ip_ban_enabled: True
 
 frontend:
   themes: !include_dir_merge_named themes/
 
 homekit:
-  pincode: '132-13-213'
+  pincode: !secret homekit_pin
 
 updater:
   reporting: True
@@ -53,25 +55,6 @@ updater:
   
 tellstick:
   signal_repetitions: 4
-
-
-
-
-
-
-
-
-#mqtt:
-#  embedded:
-#    listeners:
-#      default:
-#        max-connections: 500
-#        type: tcp
-#        bind: 0.0.0.0:1883
-#  broker: 0.0.0.0
-#  port: 1883
-
-
 
 logger:
   default: debug
@@ -82,7 +65,6 @@ logger:
     homeassistant.core: warn
     homeassistant.components.device_tracker: critical
     homeassistant.components.camera: critical
-#zeroconf:
 
 verisure:
   username: fredrik@dernebo.se
@@ -202,29 +184,18 @@ input_boolean:
     initial: on
 
 
-
-
-#nextsunrise:
-#  friendly_name: 'Next Sunrise'
-#  value_template: "{{ as_timestamp(states.sun.sun.attributes.next_rising) | timestamp_custom('%D %-I:%M %P') }}"
-#
-#nextsunset:
-#  friendly_name: 'Next Sunset'
-#  value_template: "{{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom('%D %-I:%M %P') }}"
-#   
-#dayofyear:
-#   friendly_name: 'Day Number'
-#   value_template: "{{ now().strftime('%j') }}"
-#
-#weekofyear:
-#  friendly_name: 'Week Number'
-#  value_template: "{{ now().strftime('%U') }}"
-#
-#script.wakeup_bedroom:    
-#  can_cancel: false 
-
-
 #######################################
+
+#mqtt:
+#  embedded:
+#    listeners:
+#      default:
+#        max-connections: 500
+#        type: tcp
+#        bind: 0.0.0.0:1883
+#  broker: 0.0.0.0
+#  port: 1883
+
 
 #weblink:
 # entities:
