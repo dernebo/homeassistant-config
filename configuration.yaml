@@ -37,6 +37,7 @@ http:  # base_url: example.duckdns.org:8123
     - 127.0.0.1
     - 194.50.140.4
     - 90.231.63.139 #Johan L
+    - 81.232.179.242 #Daniel G 
     - 192.168.1.0/24
   ip_ban_enabled: True
 
