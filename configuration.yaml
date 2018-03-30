@@ -1,0 +1,270 @@
+##### Home Assistant Config
+
+###################
+##### Includes 
+###################
+
+homeassistant: !include homeassistant.yaml
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+alert: !include alerts.yaml
+sensor: !include sensors.yaml
+
+
+config:
+history:
+recorder:
+logbook:
+sun:
+
+#ios:
+#cloud:
+#discovery:
+#conversation:
+#introduction:
+
+panel_iframe:
+  configurator:
+    title: Configurator
+    icon: mdi:wrench
+    url: http://192.168.1.50:3218
+
+http:  # base_url: example.duckdns.org:8123
+  api_password: !secret http_password
+  login_attempts_threshold: 5
+  trusted_networks:
+    - 127.0.0.1
+    - 194.50.140.4
+    - 90.231.63.139 #Johan L
+    - 192.168.1.0/24
+  ip_ban_enabled: True
+
+frontend:
+  themes: !include_dir_merge_named themes/
+
+homekit:
+  pincode: '132-13-213'
+
+updater:
+  reporting: True
+  include_used_components: True
+  
+tellstick:
+  signal_repetitions: 4
+
+
+
+
+
+
+
+
+#mqtt:
+#  embedded:
+#    listeners:
+#      default:
+#        max-connections: 500
+#        type: tcp
+#        bind: 0.0.0.0:1883
+#  broker: 0.0.0.0
+#  port: 1883
+
+
+
+logger:
+  default: debug
+  logs:
+    homeassistant.components: info
+    homeassistant.components.websocket_api: info
+    homeassistant.components.http.view: critical
+    homeassistant.core: warn
+    homeassistant.components.device_tracker: critical
+    homeassistant.components.camera: critical
+#zeroconf:
+
+verisure:
+  username: fredrik@dernebo.se
+  password: !secret verisure_pw
+
+ifttt:
+  key: !secret ifttt_key
+
+notify:
+  - name: push_fredrik
+    platform: pushover
+    api_key: !secret push_api_key
+    user_key: !secret push_user_key
+
+influxdb:
+  host: 192.168.1.50
+  username: hass
+  password: !secret influxdb_pw
+  database: hass
+  include:
+    entities:
+      - sensor.jaskyl1_temperature
+      - sensor.jaskyl2_temperature
+      - sensor.ute_temperature
+      - sensor.inglasning_temperature
+      - sensor.garage_temperature
+      - sensor.kok_temperature
+      - sensor.vardagsrum_temperature
+      - sensor.garage_humidity
+      - sensor.vardagsrum_humidity
+      - sensor.speedtest_upload
+      - sensor.speedtest_download
+      - sensor.olkallare_humidity
+      - sensor.olkallare_temperature
+      - sensor.frys_kok_temperature
+      - sensor.sovrum_jack_humidity
+      - sensor.sovrum_jack_temperature
+      - sensor.sovrum_humidity
+      - sensor.sovrum_temperature
+      - sensor.kyl_kok_temperature
+      - sensor.humidor_humidity
+      - sensor.humidor_temperature
+      - sensor.frys_garage_temperature
+
+
+deconz:
+  host: 192.168.1.55
+
+customizer:
+  custom_ui: local
+
+
+
+input_datetime:
+  wakeup_time:
+    name: Input wakeup time
+    has_date: false
+    has_time: true
+
+media_player:
+- platform: apple_tv
+  host: 192.168.1.173
+  login_id: 00000000-07b4-78b6-74fb-0dbd71c14c3c
+
+sensor Speedtest:
+ platform: speedtest
+ minute: 00
+ hour:
+   - 0
+   - 6
+   - 12
+   - 18
+ monitored_conditions:
+   - ping
+   - download
+   - upload
+
+
+
+##################################
+  
+  
+input_number:
+  wakeup_hour:
+    name: Hour
+    icon: mdi:clock-in
+    initial: 6
+    min: 0
+    max: 23
+    step: 1
+
+  wakeup_minutes:
+    name: Minutes
+    icon: mdi:clock-in
+    initial: 30
+    min: 0
+    max: 59
+    step: 1
+
+  wakeup_duration:
+    name: Light fade-in duration
+    icon: mdi:clock-in
+    initial: 1
+    min: 1
+    max: 60
+    step: 1
+
+input_boolean:
+  wakeup:
+    name: 'Enable wakeup light'
+    icon: mdi:power
+    initial: on
+
+  wakeup_weekends:
+    name: 'Wakeup weekends'
+    icon: mdi:power
+    initial: on
+
+
+
+
+#nextsunrise:
+#  friendly_name: 'Next Sunrise'
+#  value_template: "{{ as_timestamp(states.sun.sun.attributes.next_rising) | timestamp_custom('%D %-I:%M %P') }}"
+#
+#nextsunset:
+#  friendly_name: 'Next Sunset'
+#  value_template: "{{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom('%D %-I:%M %P') }}"
+#   
+#dayofyear:
+#   friendly_name: 'Day Number'
+#   value_template: "{{ now().strftime('%j') }}"
+#
+#weekofyear:
+#  friendly_name: 'Week Number'
+#  value_template: "{{ now().strftime('%U') }}"
+#
+#script.wakeup_bedroom:    
+#  can_cancel: false 
+
+
+#######################################
+
+#weblink:
+# entities:
+#   - name: Home Assistant Webpage
+#     url: https://home-assistant.io/
+#   - name: Home Assistant Forum
+#     url: https://community.home-assistant.io/
+#   - name: Home Assistant Chat
+#     url: https://discordapp.com/channels/330944238910963714/330944238910963714
+
+#history_graph:
+# gr1:
+#   name: Temp ute
+#   entities:
+#     - sensor.ute_temperature
+#   hours_to_show: 120
+#   refresh: 60
+# gr2:
+#   name: Temp ölkällare
+#   entities:
+#     - sensor.olkallare_temperature
+#     - sensor.ute_temperature
+#   hours_to_show: 120
+#   # refresh: 0
+
+
+#weather:
+# - platform: openweathermap
+#   api_key: !secret weather_api
+   
+#device_tracker:
+#- platform: unifi
+#  host: unifi
+#  username: fredrik@dernebo.se
+#  password: !secret ubiquiti_pw
+#- platform: nmap_tracker
+#  hosts:
+#  - 192.168.1.200
+#  - 192.168.1.201
+#  home_interval: 300
+#  scan_options: " --privileged -sP "
+#  consider_home: 180
+
+
