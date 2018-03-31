@@ -90,29 +90,29 @@ myautomation:
   - automation.set_theme_at_startup
   - automation.update_available_notifications
   - automation.wakeup_light_bedroom
-#testgroup:  
-#  - sensor.jaskyl1_temperature
-#  - sensor.jaskyl2_temperature
-#  - sensor.ute_temperature
-#  - sensor.inglasning_temperature
-#  - sensor.garage_temperature
-#  - sensor.kok_temperature
-#  - sensor.vardagsrum_temperature
-#  - sensor.garage_humidity
-#  - sensor.vardagsrum_humidity
-#  - sensor.speedtest_upload
-#  - sensor.speedtest_download
-#  - sensor.olkallare_humidity
-#  - sensor.olkallare_temperature
-#  - sensor.frys_kok_temperature
-#  - sensor.sovrum_jack_humidity
-#  - sensor.sovrum_jack_temperature
-#  - sensor.sovrum_humidity
-#  - sensor.sovrum_temperature
-#  - sensor.kyl_kok_temperature
-#  - sensor.humidor_humidity
-#  - sensor.humidor_temperature
-#  - sensor.frys_garage_temperature
+testgroup:  
+  - sensor.jaskyl1_temperature
+  - sensor.jaskyl2_temperature
+  - sensor.ute_temperature
+  - sensor.inglasning_temperature
+  - sensor.garage_temperature
+  - sensor.kok_temperature
+  - sensor.vardagsrum_temperature
+  - sensor.garage_humidity
+  - sensor.vardagsrum_humidity
+  - sensor.speedtest_upload
+  - sensor.speedtest_download
+  - sensor.olkallare_humidity
+  - sensor.olkallare_temperature
+  - sensor.frys_kok_temperature
+  - sensor.sovrum_jack_humidity
+  - sensor.sovrum_jack_temperature
+  - sensor.sovrum_humidity
+  - sensor.sovrum_temperature
+  - sensor.kyl_kok_temperature
+  - sensor.humidor_humidity
+  - sensor.humidor_temperature
+  - sensor.frys_garage_temperature
 
 Unused: 
   - switch.sw1
@@ -173,9 +173,6 @@ settings_view:
     - group.wakeuplight
     - light.light_2
     - script.wakeup_bedroom
-    #- states.sensor.time.state
-    #- states.sensor.wakeup_start_time_lights
-    #- wakeup_alarm_time
 
 test_view:
   view: yes
