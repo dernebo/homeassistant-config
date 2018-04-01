@@ -16,15 +16,14 @@ config:
 history:
 recorder:
 logbook:
-sun:
 
+#sun:
 #ios:
 #cloud:
 #discovery:
 #conversation:
 #introduction:
-
-zeroconf:
+#zeroconf:
 
 panel_iframe:
   configurator:
@@ -46,8 +45,8 @@ http:  # base_url: example.duckdns.org:8123
 frontend:
   themes: !include_dir_merge_named themes/
 
-homekit:
-  pincode: !secret homekit_pin
+#homekit:
+#  pincode: !secret homekit_pin
 
 updater:
   reporting: True
@@ -70,8 +69,8 @@ verisure:
   username: fredrik@dernebo.se
   password: !secret verisure_pw
 
-ifttt:
-  key: !secret ifttt_key
+#ifttt:
+#  key: !secret ifttt_key
 
 notify:
   - name: push_fredrik
@@ -124,24 +123,24 @@ input_datetime:
     has_date: false
     has_time: true
 
-media_player:
-- platform: apple_tv
-  host: 192.168.1.173
-  login_id: 00000000-07b4-78b6-74fb-0dbd71c14c3c
-
-sensor Speedtest:
- platform: speedtest
- minute: 00
- hour:
-   - 0
-   - 6
-   - 12
-   - 18
- monitored_conditions:
-   - ping
-   - download
-   - upload
-
+#media_player:
+#- platform: apple_tv
+#  host: 192.168.1.173
+#  login_id: 00000000-07b4-78b6-74fb-0dbd71c14c3c
+#
+#sensor Speedtest:
+# platform: speedtest
+# minute: 00
+# hour:
+#   - 0
+#   - 6
+#   - 12
+#   - 18
+# monitored_conditions:
+#   - ping
+#   - download
+#   - upload
+#
 
 
 ##################################

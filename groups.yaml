@@ -113,7 +113,9 @@ testgroup:
   - sensor.humidor_humidity
   - sensor.humidor_temperature
   - sensor.frys_garage_temperature
-
+badrum:
+  - light.badrum1
+  - light.badrum2
 Unused: 
   - switch.sw1
   - switch.sw07
@@ -143,6 +145,7 @@ def_view:
   name: Dashboard
   entities:
     - group.lampor
+    - group.badrum
 klimat_view:
   view: yes
   name: Klimat

@@ -195,7 +195,7 @@
           entity_id: input_boolean.wakeup
           state: 'on'
         - condition: state
-          entity_id: light.light_2
+          entity_id: light.sovrum_bord
           state: 'off'
         - condition: or
           conditions:

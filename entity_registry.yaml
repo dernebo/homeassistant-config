@@ -66,3 +66,15 @@ light.badrum2:
   name:
   platform: deconz
   unique_id: 90:fd:9f:ff:fe:6b:76:78-01
+binary_sensor.tradfri_motion_sensor_:
+  name:
+  platform: deconz
+  unique_id: 90:fd:9f:ff:fe:6d:cf:0f-01-0006
+binary_sensor.tradfri_motion_sensor__2:
+  name:
+  platform: deconz
+  unique_id: 90:fd:9f:ff:fe:6d:c9:eb-01-0006
+sensor.tradfri_wireless_dimmer__battery_level:
+  name:
+  platform: deconz
+  unique_id: 00:0b:57:ff:fe:11:b3:21-01-1000
