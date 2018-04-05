@@ -135,7 +135,6 @@ wakeuplight:
     - input_boolean.wakeup
     - input_boolean.wakeup_weekends
 
-
 #-------------------------------
 #------------ Views ------------
 #-------------------------------

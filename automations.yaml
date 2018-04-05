@@ -76,13 +76,7 @@
     action:
       service: switch.turn_off
       entity_id:
-        - switch.bordslampa_tvrum
-        - switch.fonsterlampa_vardagsrum
-        - switch.ljusslinga_vardagsrum
-        - switch.rislampa_vardagsrum
-        - switch.fonsterlampa_kok
-
-
+        - group.lampor
 
   - alias: 'Push när man slår på lampa i köket'
     trigger:
@@ -176,9 +170,7 @@
     action:
       service: frontend.set_theme
       data:
-        name: midnight
-        
-        
+        name: midnight    
         
 ######## Wakeup light
 

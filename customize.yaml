@@ -13,8 +13,6 @@ group.all_switches:
 group.all_binary_sensors:
   hidden: false
 
-
-
 sensor.frys_garage_temperature:
   friendly_name: Frys garage
   icon: mdi:temperature-celsius
